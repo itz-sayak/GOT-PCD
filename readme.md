@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">LOFT: Latent-Guided Optimal Flow Transport for 3D Point Cloud Denoising</h1>
+  <h1 align="center">GOT-PCD: Latent-Guided Optimal Flow Transport for 3D Point Cloud Denoising</h1>
   <p align="center">
     <strong>Latent-conditioned OT-CFM for PUNet and ScanNet++</strong>
   </p>
@@ -14,7 +14,7 @@
 
 GOT_PCD replaces the diffusion Schrodinger bridge used in P2P-Bridge with Optimal Transport Conditional Flow Matching (OT-CFM) and adds a learned latent conditioning pathway. A frozen SemanticAutoencoder encodes noisy geometry into latent tokens, a FreqEncodingTransformer refines those tokens as a function of time, and the PVCNN2Unet backbone consumes them through multi-level cross-attention.
 
-This repository contains two LOFT branches:
+This repository contains two GOT-PCD branches:
 
 - PUNet synthetic object denoising via `configs/PVDS_PUNet_latent.yaml`
 - ScanNet++ real indoor scene denoising via `configs/PVDL_SNPP_latent.yaml`
@@ -28,8 +28,8 @@ The code was tested with Python 3.10, PyTorch 2.5.1+cu121, CUDA 12.1, and Ubuntu
 Create a conda environment:
 
 ```bash
-conda create -n loft python=3.10
-conda activate loft
+conda create -n GOT-PCD python=3.10
+conda activate GOT-PCD
 ```
 
 Install PyTorch first:
@@ -87,7 +87,7 @@ For evaluation, the provided script reads scene ids from `splits/snpp_test_valid
 
 ## Training
 
-To train the PUNet LOFT model:
+To train the PUNet GOT-PCD model:
 
 ```bash
 python train.py --config configs/PVDS_PUNet_latent.yaml
@@ -102,7 +102,7 @@ Important PUNet settings:
 - AE checkpoint: `/mnt/zone/B/NEW/P2B_latent_DDPM/checkpoints_ae_retrain_v3/ae_epoch_675.pth`
 - `latent_film: true`
 
-To train the ScanNet++ LOFT model:
+To train the ScanNet++ GOT-PCD model:
 
 ```bash
 CUDA_VISIBLE_DEVICES=1 PYTHONUNBUFFERED=1 python -u train.py --config configs/PVDL_SNPP_latent.yaml
@@ -144,7 +144,7 @@ The object branch uses checkpoints from `checkpoints/otcfm_latent/`. The ScanNet
 
 ### PUNet objects
 
-To evaluate the PUNet LOFT model on object data:
+To evaluate the PUNet GOT-PCD model on object data:
 
 ```bash
 python evaluate_objects.py \
@@ -239,7 +239,7 @@ python denoise_object.py \
 
 ## Architecture
 
-The main LOFT components are:
+The main GOT-PCD components are:
 
 - `models/flow_bridge.py`: `OTFlowBridge` and `LatentOTFlowBridge`
 - `models/autoencoder.py`: frozen SemanticAutoencoder
@@ -278,4 +278,4 @@ utils/          shared utilities
 
 ## Acknowledgements
 
-This repository uses the PVCNN architecture and custom point cloud evaluation utilities. The LOFT latent OT-CFM formulation, SemanticAutoencoder integration, and FreqEncodingTransformer conditioning pipeline are implemented in this codebase.
+This repository uses the PVCNN architecture and custom point cloud evaluation utilities. The GOT-PCD latent OT-CFM formulation, SemanticAutoencoder integration, and FreqEncodingTransformer conditioning pipeline are implemented in this codebase.
