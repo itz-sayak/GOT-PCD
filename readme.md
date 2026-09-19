@@ -12,7 +12,7 @@
 
 <br>
 
-LOFT replaces the diffusion Schrodinger bridge used in P2P-Bridge with Optimal Transport Conditional Flow Matching (OT-CFM) and adds a learned latent conditioning pathway. A frozen SemanticAutoencoder encodes noisy geometry into latent tokens, a FreqEncodingTransformer refines those tokens as a function of time, and the PVCNN2Unet backbone consumes them through multi-level cross-attention.
+GOT_PCD replaces the diffusion Schrodinger bridge used in P2P-Bridge with Optimal Transport Conditional Flow Matching (OT-CFM) and adds a learned latent conditioning pathway. A frozen SemanticAutoencoder encodes noisy geometry into latent tokens, a FreqEncodingTransformer refines those tokens as a function of time, and the PVCNN2Unet backbone consumes them through multi-level cross-attention.
 
 This repository contains two LOFT branches:
 
