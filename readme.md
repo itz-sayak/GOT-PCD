@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">GOT-PCD: Latent-Guided Optimal Flow Transport for 3D Point Cloud Denoising</h1>
+  <h1 align="center">GOT-PCD: Geometry-Guided Optimal-Flow Transport for 3D Point Cloud Denoising</h1>
   <p align="center">
     <strong>Latent-conditioned OT-CFM for PUNet and ScanNet++</strong>
   </p>
